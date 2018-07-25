@@ -1,5 +1,7 @@
 package com.enviyo.healthManager.model;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -12,6 +14,15 @@ public class User {
 	private Integer userName;
 	@Column(name = "password")
 	private String password;
+	@Column(name = "license_number")
+	private BigDecimal licenseNumber;
+	
+	public BigDecimal getLicenseNumber() {
+		return licenseNumber;
+	}
+	public void setLicenseNumber(BigDecimal licenseNumber) {
+		this.licenseNumber = licenseNumber;
+	}
 	public Integer getUserName() {
 		return userName;
 	}
