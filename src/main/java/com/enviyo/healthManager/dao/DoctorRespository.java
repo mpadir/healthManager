@@ -1,11 +1,15 @@
 package com.enviyo.healthManager.dao;
 
-import java.math.BigDecimal;
-
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import com.enviyo.healthManager.model.Doctor;
 
-public interface DoctorRespository  extends CrudRepository<Doctor, BigDecimal>{
+@Repository
+public interface DoctorRespository  extends CrudRepository<Doctor, Integer>{
+	
+	@Query("select al from Doctor al where email = ?1")
+	Doctor findByEmail(String mail);
 
 }

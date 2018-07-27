@@ -13,7 +13,7 @@ public class Doctor {
 	
 	@Id
 	@Column(name="id")
-	private BigDecimal id;
+	private Integer id;
 	
 	@Column(name = "doctor_name")
 	private String doctorName;
@@ -30,16 +30,25 @@ public class Doctor {
 	@Column(name = "work_places")
 	private String workPlaces;
 	
+	@Column(name = "password")
+	private String password;
+	
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public String getWorkPlaces() {
 		return workPlaces;
 	}
 	public void setWorkPlaces(String workPlaces) {
 		this.workPlaces = workPlaces;
 	}
-	public BigDecimal getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(BigDecimal id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getDoctorName() {
