@@ -4,12 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.enviyo.healthManager.dao.UserRepository;
 import com.enviyo.healthManager.model.User;
 
+@CrossOrigin
 @RestController
 @Controller
 public class UserController {
@@ -22,9 +24,9 @@ public class UserController {
 	public ResponseEntity<User> Login(@RequestBody User user) {
 		User newUser = new User();
 		
-		newUser = userRepository.findByUserName(user.getUserName());
+		newUser = userRepository.findByEmail(user.getEmail());
 		if(newUser != null) {
-			if(newUser.getPassword() == user.getPassword()) {
+			if(newUser.getPassword().equals( user.getPassword())) {
 				return new ResponseEntity<User>(newUser,HttpStatus.OK);
 			}
 		}
